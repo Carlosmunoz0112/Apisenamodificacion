@@ -5,7 +5,7 @@ const getProducto=async(req, res=response) => {
     let mensaje=''
     try {
         const productos= await producto.find()
-        mensaje= productos.mensaje
+        mensaje= productos
     } catch (error) {
         mensaje= error
         
