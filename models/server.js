@@ -1,5 +1,5 @@
 const express=require('express');
-
+const bodyparser = require('body-parser')
 const dbConnection=require('../database/config')
 
 
@@ -15,6 +15,7 @@ class server{
     }
     middlewares() //Directorio Publico
     {
+        this.app.use(bodyparser.json());
         this.app.use(express.static(__dirname + "/public"));
     }
     routes()

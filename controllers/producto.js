@@ -4,7 +4,7 @@ const Producto = require('../models/producto'); // Cambiar el nombre del modelo 
 const getProducto=async(req, res=response) => {
     let mensaje=''
     try {
-        const productos= await producto.find()
+        const productos= await Producto.find()
         mensaje= productos
     } catch (error) {
         mensaje= error
@@ -16,14 +16,15 @@ const getProducto=async(req, res=response) => {
   }
 
 const postProducto = async (req, res = response) => {
-    const body = req.query;
+    const body = req.body;
     let mensaje = '';
+    
     const producto = new Producto(body); // Cambiar el nombre del modelo si es diferente
     try {
         await producto.save();
         mensaje = 'Producto registrado';
     } catch (error) {
-        mensaje = 'Error';
+        mensaje = error ;
     }
     res.json({
         mensaje
@@ -31,7 +32,7 @@ const postProducto = async (req, res = response) => {
 };
 
 const putProducto = async (req, res = response) => {
-    const body = req.query;
+    const body = req.body;
     let mensaje = '';
     try {
         await Factura.findOneAndUpdate({
@@ -52,7 +53,7 @@ const putProducto = async (req, res = response) => {
 };
 
 const deleteProducto = async (req, res = response) => {
-    const body = req.query;
+    const body = req.body;
     let mensaje = '';
     try {
         await Factura.findOneAndUpdate({

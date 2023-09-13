@@ -41,4 +41,4 @@ module.exports = model('Factura', facturaSchema);
 
 
 
-module.exports = model('factura', facturaSchema);
+
