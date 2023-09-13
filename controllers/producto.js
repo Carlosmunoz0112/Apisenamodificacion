@@ -16,7 +16,7 @@ const getProducto=async(req, res=response) => {
   }
 
 const postProducto = async (req, res = response) => {
-    const body = req.body;
+    const body = req.query;
     let mensaje = '';
     const producto = new Producto(body); // Cambiar el nombre del modelo si es diferente
     try {
@@ -31,7 +31,7 @@ const postProducto = async (req, res = response) => {
 };
 
 const putProducto = async (req, res = response) => {
-    const body = req.body;
+    const body = req.query;
     let mensaje = '';
     try {
         await Factura.findOneAndUpdate({
@@ -52,7 +52,7 @@ const putProducto = async (req, res = response) => {
 };
 
 const deleteProducto = async (req, res = response) => {
-    const body = req.body;
+    const body = req.query;
     let mensaje = '';
     try {
         await Factura.findOneAndUpdate({
