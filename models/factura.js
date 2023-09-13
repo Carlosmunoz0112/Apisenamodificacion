@@ -31,7 +31,7 @@ required: [true, 'la fecha es obligatoria']
     },
     total: {
         type: Number,
-        required: true
+        required: [true, 'El estado es obligatorio']
     }
 });
 

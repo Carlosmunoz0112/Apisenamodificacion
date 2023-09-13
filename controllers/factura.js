@@ -16,7 +16,7 @@ const getFactura = async (req, res = response) => {
 }
 
 const postFactura = async (req, res = response) => {
-    const body = req.query;
+    const body = req.body;
     let mensaje = '';
     const factura = new Factura(body); // Cambiar el nombre del modelo si es diferente
     try {
@@ -31,7 +31,7 @@ const postFactura = async (req, res = response) => {
 };
 
 const putFactura = async (req, res = response) => {
-    const body = req.query;
+    const body = req.body;
     let mensaje = '';
     try {
         await Factura.findOneAndUpdate({
@@ -53,7 +53,7 @@ const putFactura = async (req, res = response) => {
 };
 
 const deleteFactura = async (req, res = response) => {
-    const body = req.query;
+    const body = req.body;
     let mensaje = '';
     try {
         await Factura.findOneAndUpdate({
