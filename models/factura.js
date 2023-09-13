@@ -1,39 +1,37 @@
 const { Schema, model } = require('mongoose');
 
-const facturaSchema = Schema({
-   
-    Nombrefactura: {
+const productoSchema = new Schema({
+    nombre: {
         type: String,
-        required: [true, 'el nombre de la factura es obligatoria']
-        
+        required: [true, 'El nombre del producto es obligatorio']
     },
-    fechaventa:{
-        type:Date,
-        required:[true, 'La fecha de venta es obligatoria'],
-        validate:{
-            validator: function (fechaventa){
-                let fecha= new Date()
-                return fechaventa<fecha
-            },
-            message:'La fecha de venta es mayor a la fecha actual'
-
-        }
-    },
-    
-    producto: {
-        type: String,
-        required: [true, 'el  producto es obligatorio']
-    },
-
     precio: {
         type: Number,
-        required: [true, 'El precio es obligatorio']
+        required: [true, 'El precio del producto es obligatorio']
     },
     cantidad: {
         type: Number,
-        required: [true, 'la cantidad es obligatoria ']
+        required: [true, 'La cantidad del producto es obligatoria']
+    }
+});
+
+const facturaSchema = new Schema({
+    nombreFactura: {
+        type: String,
+        required: [true, 'El nombre de la factura es obligatorio']
     },
-   
+    fechaVenta: {
+        type: Date,
+        required: [true, 'La fecha de venta es obligatoria'],
+        validate: {
+            validator: function (fechaVenta) {
+                const fecha = new Date();
+                return fechaVenta < fecha;
+            },
+            message: 'La fecha de venta es mayor a la fecha actual'
+        }
+    },
+    productos: [productoSchema], // Arreglo de productos
     estado: {
         type: Boolean,
         default: true,
@@ -44,6 +42,11 @@ const facturaSchema = Schema({
         required: true
     }
 });
+
+
+
+module.exports = model('Factura', facturaSchema);
+
 
 // Antes de guardar, calcula el valor del campo 'total' multiplicando 'precio' por 'cantidad'
 facturaSchema.pre('save', function (next) {
