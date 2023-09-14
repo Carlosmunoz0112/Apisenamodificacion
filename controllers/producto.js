@@ -35,7 +35,7 @@ const putProducto = async (req, res = response) => {
     const body = req.body;
     let mensaje = '';
     try {
-        await Factura.findOneAndUpdate({
+        await Producto.findOneAndUpdate({
             Nombreproducto: body.Nombreproducto,
             categoria: body.categoria,
             precio: body.precio,
@@ -56,7 +56,7 @@ const deleteProducto = async (req, res = response) => {
     const body = req.body;
     let mensaje = '';
     try {
-        await Factura.findOneAndUpdate({
+        await Producto.findOneAndUpdate({
             Nombreproducto: body.Nombreproducto,
             categoria: body.categoria,
             precio: body.precio,
